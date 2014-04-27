@@ -70,6 +70,7 @@ class OSM_EXPORT DataPakSource : public DataSource {
   /// This method is inherited from DataSource.
   ///
   virtual void OnRequest(int request_id,
+                         const ResourceRequest& request,
                          const WebString& path);
 
  protected:

@@ -122,29 +122,29 @@ class OSM_EXPORT ResourceRequest {
 
   /// The process ID where this request originated from. This corresponds
   /// to WebView::process_id().
-  virtual int origin_process_id() = 0;
+  virtual int origin_process_id() const = 0;
 
   /// The routing ID where this request originated from. This corresponds
   /// to WebView::routing_id().
-  virtual int origin_routing_id() = 0;
+  virtual int origin_routing_id() const = 0;
 
   /// Get the URL associated with this request.
-  virtual WebURL url() = 0;
+  virtual WebURL url() const = 0;
 
   /// Get the HTTP method (usually "GET" or "POST")
-  virtual WebString method() = 0;
+  virtual WebString method() const = 0;
 
   /// Set the HTTP method
   virtual void set_method(const WebString& method) = 0;
 
   /// Get the referrer
-  virtual WebString referrer() = 0;
+  virtual WebString referrer() const = 0;
 
   /// Set the referrer
   virtual void set_referrer(const WebString& referrer) = 0;
 
   /// Get extra headers for the request
-  virtual WebString extra_headers() = 0;
+  virtual WebString extra_headers() const = 0;
 
   ///
   /// Add a list of HTTP header strings, each delimited by "\r\n". Each
@@ -158,10 +158,10 @@ class OSM_EXPORT ResourceRequest {
                                  const WebString& value) = 0;
 
   /// Get the number of upload elements (essentially, batches of POST data).
-  virtual unsigned int num_upload_elements() = 0;
+  virtual unsigned int num_upload_elements() const = 0;
 
   /// Get a certain upload element (returned instance is owned by this class)
-  virtual const UploadElement* GetUploadElement(unsigned int idx) = 0;
+  virtual const UploadElement* GetUploadElement(unsigned int idx) const = 0;
 
   /// Clear all upload elements
   virtual void ClearUploadElements() = 0;

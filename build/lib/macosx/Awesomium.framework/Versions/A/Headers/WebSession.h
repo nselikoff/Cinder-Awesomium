@@ -69,6 +69,7 @@ class OSM_EXPORT WebSession {
   ///
   /// @param  asset_host  The asset hostname that this DataSource will be used
   ///                     for, (eg, asset://asset_host_goes_here/foobar.html).
+  ///                     Specify "catch-all" to catch any unmatched requests.
   ///
   /// @param  source      The DataSource that will handle requests. You retain
   ///                     ownership of the DataSource. This instance should

@@ -111,6 +111,19 @@ struct OSM_EXPORT WebConfig {
   bool reduce_memory_usage_on_navigation;
 
   ///
+  /// User-defined JavaScript to run at the beginning of every page load. This
+  /// code is run immediately after global JavaScript objects are set up and
+  /// before the DOM or any inline scripts are loaded.
+  ///
+  WebString user_script;
+
+  ///
+  /// The name of the asset protocol which is, by default, "asset".
+  /// For example: "asset://my_file.html"
+  ///
+  WebString asset_protocol;
+
+  ///
   /// Additional command-line options for Chromium (this is for advanced users
   /// only, use these at your own risk).
   ///

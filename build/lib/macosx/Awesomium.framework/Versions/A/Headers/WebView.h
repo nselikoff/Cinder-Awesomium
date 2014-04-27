@@ -96,6 +96,12 @@ class OSM_EXPORT WebView {
   virtual int routing_id() = 0;
 
   ///
+  /// Increment and return the next routing ID, can be used to predict the
+  /// routing ID of the next child WebView in the same process.
+  ///
+  virtual int next_routing_id() = 0;
+
+  ///
   /// Get the handle for the corresponding child-process hosting this
   /// WebView. This may not be initialized until some time after the
   /// WebView is actually created (when we receive the first IPC message
