@@ -6,7 +6,7 @@
 
 #include "cinder/Exception.h"
 #include "cinder/Surface.h"
-#include "cinder/app/AppBasic.h"
+#include "cinder/app/App.h"
 #include "cinder/gl/Texture.h"
 
 namespace ph { namespace awesomium {
@@ -31,21 +31,21 @@ ci::Surface toSurface( Awesomium::BitmapSurface* surface );
 
 inline ci::Surface toSurface( Awesomium::WebView* webview )
 {
-	return toSurface( (Awesomium::BitmapSurface*) webview->surface() );
+	return toSurface( static_cast< Awesomium::BitmapSurface* >( webview->surface() ) );
 }
 
-ci::gl::Texture toTexture( Awesomium::BitmapSurface* surface, ci::gl::Texture::Format format=ci::gl::Texture::Format() );
+ci::gl::TextureRef toTexture( Awesomium::BitmapSurface* surface, ci::gl::Texture::Format format=ci::gl::Texture::Format() );
 
-inline ci::gl::Texture toTexture( Awesomium::WebView* webview, ci::gl::Texture::Format format=ci::gl::Texture::Format() )
+inline ci::gl::TextureRef toTexture( Awesomium::WebView* webview, ci::gl::Texture::Format format=ci::gl::Texture::Format() )
 {
-	return toTexture( (Awesomium::BitmapSurface*) webview->surface(), format );
+	return toTexture( static_cast< Awesomium::BitmapSurface* >( webview->surface() ), format );
 }
 
 inline bool isDirty( Awesomium::WebView* webview ) 
 {
 	if( ! webview ) throw EmptyPointerException();
 
-	Awesomium::BitmapSurface* surface = (Awesomium::BitmapSurface*) webview->surface();
+	Awesomium::BitmapSurface* surface = static_cast< Awesomium::BitmapSurface* >( webview->surface() );
 	if( ! surface ) return false; //throw EmptyPointerException();
 
 	return surface->is_dirty();
